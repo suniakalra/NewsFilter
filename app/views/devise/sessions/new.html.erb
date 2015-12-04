@@ -1,0 +1,37 @@
+<div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <!-- <h1 class="text-center login-title">Sign in to Death By a Thousand Cuts</h1> -->
+            <div class="account-wall">
+                <%# if request.host == 'trantor-dbtc.herokuapp.com'%>
+                    <!-- <img class="profile-img" src="/assets/Trantor1.png" alt=""> -->
+                <%#else%>
+                    <!-- <img class="profile-img" src="/assets/ContinuumGlobal-logo.jpg" alt=""> -->
+                <%#end%>
+                <img class="profile-img" src="/assets/ship.jpg" alt="">
+
+                <div class="form-signin">
+
+
+                    <%= form_for(resource, as: resource_name, url: session_path(resource_name))  do |f| %>
+     
+
+                        <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Username", style: "margin-bottom:10px" %>
+     
+                        <%= f.password_field :password, autocomplete: "off",class: "form-control", placeholder: "Password", style: "margin-bottom:10px" %>
+
+                      <div class="actions">
+                        <%= f.submit "Log in", class: "btn btn-lg btn-primary btn-block" %>
+                      </div>
+                    <% end %>
+                    <br>
+                   <%= render "devise/shared/links" %>
+                </div>
+                <div class="col-sm-12" style="height: 42px;background-color: white;">
+
+                    <div class="col-sm-3 col-sm-offset-9">
+                        <img class="" src="/assets/ship.jpg" alt="" style="width: 100%;">                    
+                    </div>
+                </div>   
+            </div>
+        </div>
+    </div>

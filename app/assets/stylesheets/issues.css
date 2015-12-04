@@ -1,0 +1,12 @@
+.unread_issue{
+	background-color: #E2E5D8 !important;
+}
+.read_issue{
+	background-color: white !important;
+}
+.create_cut_field{
+	margin-bottom: 10px;
+}
+.sorting_disabled{
+	cursor: auto !important;
+}

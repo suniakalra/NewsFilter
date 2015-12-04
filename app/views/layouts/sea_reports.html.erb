@@ -1,0 +1,52 @@
+<!DOCTYPE html>  
+<html>  
+  <head>  
+    <title>Ship Efficiency Project</title>  
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tag %>  
+  </head>  
+  <body> 
+
+    <% if current_user %>  
+      <%= render "layouts/sea_reports_navbar"%>
+    <%end%>
+
+    <%= render 'layouts/flash_messages' %>
+
+    <div class="container-fluid container-root"> 
+    	  <%= yield %>
+
+        <div class="modal fade" id="create_new_sea_report" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog" style="width: 65%;">
+            <div class="modal-content" >
+              <div class="modal-header" style="background-color: #42CAA6;height: 47px;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <b> Create New Sea Report  </b>
+              </div>
+              <div class="modal-body" style="height: 300px;">
+                <%=render "/sea_reports/new_sea_report"%>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->  
+        </div>
+
+        <!-- Ship Particulars -->
+        <div class="modal fade" id="ship_particulars" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog" style="width: 65%;">
+            <div class="modal-content" >
+              <div class="modal-header" style="background-color: #42CAA6;height: 47px;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <b> Ship Particular Details </b>
+              </div>
+              <div class="modal-body" style="height: 300px;">
+                <%=render "/sea_reports/ship_particulars"%>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->  
+        </div>
+
+    </div>
+    
+  </body>  
+</html>  

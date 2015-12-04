@@ -1,0 +1,31 @@
+<!--<form class="form-horizontal" , id = "new_issue_create_form"> -->
+<br>
+<%= form_tag create_sea_port_path, method: :post do  %>
+	<div class="control-group">
+
+		<div class="col-sm-12">
+			<div class="col-sm-12">
+				<label class="" for="input01">Starting Port Name</label>  
+				<div class="s">  
+					<input type="text" class="" id="starting_port" name="starting_port" required style="width: 65%;"> 
+				</div> 
+			</div>
+		</div>	
+		<div class="col-sm-12" style="margin-top: 10px;"> 
+			<div class="col-sm-12">
+				<label class="" for="input01">Destination Port Name</label>  
+				<div class="s">  
+					<input type="text" class="" id="destination_port" name="reached_port" required style="width: 65%;">
+				</div> 
+			</div>
+		</div>
+		<div class="col-sm-12 create_cut_field">
+			<div class="col-sm-12">
+				<button type="submit" class="btn btn-primary" , id ="create_issue" style="margin-top: 23px;" >Create</button>
+				<!--<button class="btn create_new_issue" , style="margin-top: 23px;">Cancel</button> -->
+			</div>
+		</div>
+	</div>  
+<%end %>  
+
+

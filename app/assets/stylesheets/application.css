@@ -1,0 +1,189 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require dataTables/jquery.dataTables
+ *= require dataTables/extras/TableTools
+ *= require dataTables/extras/TableTools_JUI
+ *= require dataTables/jquery.dataTables.bootstrap
+ *= require_tree . 
+ */
+
+ .looks-like-glass {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), inset 0 1px rgba(255, 255, 255, 0.3), inset 0 10px rgba(255, 255, 255, 0.2), inset 0 10px 20px rgba(255, 255, 255, 0.25), inset 0 -15px 30px rgba(0, 0, 0, 0.3);
+    -o-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), inset 0 1px rgba(255, 255, 255, 0.3), inset 0 10px rgba(255, 255, 255, 0.2), inset 0 10px 20px rgba(255, 255, 255, 0.25), inset 0 -15px 30px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), inset 0 1px rgba(255, 255, 255, 0.3), inset 0 10px rgba(255, 255, 255, 0.2), inset 0 10px 20px rgba(255, 255, 255, 0.25), inset 0 -15px 30px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), inset 0 1px rgba(255, 255, 255, 0.3), inset 0 10px rgba(255, 255, 255, 0.2), inset 0 10px 20px rgba(255, 255, 255, 0.25), inset 0 -15px 30px rgba(0, 0, 0, 0.3);
+
+}
+
+body{
+    background-color: #EEE !important;
+    position: relative;
+    /*padding-top:60px;*/
+    background: url("brushed_alu.png") repeat 0 0;
+}
+
+
+.logincontainer
+{
+    width: 300%;
+    margin-top: 10%;
+    padding-left: 3%;
+}
+
+/*#login-form input[type="email"] , input[type="password"] {
+    width : 70%;
+    }*/
+
+    .error {
+        background: red;
+        width: 80%;
+        padding: 4px;
+    }
+
+    .error_explanation{
+        background: red;
+        width: 30%;
+        padding: 4px;
+    }
+
+    .package-note {
+        overflow: auto;
+        height: 78px;
+        background: white;
+        width: 91%;
+        left: 10px;
+        margin-left: 20px;
+        margin-top: 17px;
+        border-radius: 15px;
+    }
+
+    .package-note-div{
+        margin-left: 40px;
+        margin-top: 16px;
+    }
+/*.container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
+    width: 1170px !important;
+    }*/
+
+    .remove_association{
+        margin-left: 10px;
+        text-decoration: none;
+    }
+    #treeview .k-sprite {
+        background-image: url("coloricons-sprite.png");
+    }
+
+    .rootfolder { background-position: 0 0; }
+    .folder { background-position: 0 -16px; }
+    .pdf { background-position: 0 -32px; }
+    .html { background-position: 0 -48px; }
+    .image { background-position: 0 -64px; }
+
+
+/*input[type="email"] , input[type="password"] {
+    width :  206px;
+    }*/
+
+    .container-root{
+        padding-right: 3% !important;
+        padding-left: 3% !important;
+    }
+
+    .form-signin
+    {
+        max-width: 330px;
+        padding: 15px;
+        margin: 0 auto;
+    }
+    .form-signin .form-signin-heading, .form-signin .checkbox
+    {
+        margin-bottom: 10px;
+    }
+    .form-signin .checkbox
+    {
+        font-weight: normal;
+    }
+    .form-signin .form-control
+    {
+        position: relative;
+        font-size: 16px;
+        height: auto;
+        padding: 10px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .form-signin .form-control:focus
+    {
+        z-index: 2;
+    }
+    .form-signin input[type="text"]
+    {
+        margin-bottom: -1px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .form-signin input[type="password"]
+    {
+        margin-bottom: 10px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+    .account-wall
+    {
+        margin-top: 20px;
+        padding: 40px 0px 43px 0px;
+        background-color: #f7f7f7;
+        -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    }
+    .login-title
+    {
+        color: #555;
+        font-size: 18px;
+        font-weight: 400;
+        display: block;
+    }
+    .profile-img
+    {
+        max-width: 90%;
+        height: 96px;
+        margin: 0 auto 10px;
+        display: block;
+    }
+    .need-help
+    {
+        margin-top: 10px;
+    }
+    .new-account
+    {
+        display: block;
+        margin-top: 10px;
+    }
+
+    .fieldset {
+       box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+       padding: 10px;
+       margin-bottom: 10px;
+   }
+
+   legend {
+    color: #fff !important;
+    background-color: #3276b1 !important;
+    border-color: #285e8e !important;
+    padding: 2px;
+    border-radius: 0.278em;
+    width: auto !important;
+    padding: 3px !important;
+    font-size: 18px !important;
+}
+.dropdown-menu {
+    z-index: 1095 !important;
+}
+.dataTables_paginate{
+    margin-top: 5px !important;
+}

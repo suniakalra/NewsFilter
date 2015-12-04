@@ -1,0 +1,17 @@
+<%= form_for(@sea_report) do |f| %>
+  <% if @sea_report.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sea_report.errors.count, "error") %> prohibited this sea_report from being saved:</h2>
+
+      <ul>
+      <% @sea_report.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>  
+<html>  
+  <head>  
+    <title>Ship Efficiency Project</title>  
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tag %>  
+  </head>  
+  <body> 
+
+    <% if current_user %>  
+      <%= render "layouts/main_navbar"%>
+    <%end%>
+
+    <%= render 'layouts/flash_messages' %>
+
+    <div class="container-fluid container-root"> 
+      <%= yield %>
+
+    </div>
+    
+  </body>  
+</html>  

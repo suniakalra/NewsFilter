@@ -1,0 +1,2 @@
+module SeaDetailsHelper
+end
