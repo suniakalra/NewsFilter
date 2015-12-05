@@ -1,5 +1,5 @@
 class SeaReport < ActiveRecord::Base
 
-  belongs_to :first_sea_report
+  belongs_to :sea_port
   has_one :ship_particular
 end
