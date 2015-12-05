@@ -187,3 +187,15 @@ body{
 .dataTables_paginate{
     margin-top: 5px !important;
 }
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    background-color: #B7B7B7 !important;
+}
+
+.bg-change{
+    box-shadow: 0 0 8px rgb(204, 35, 47);
+}
+
+.bg-change1{
+    box-shadow: 0 0 8px rgb(21, 15, 206);
+}
