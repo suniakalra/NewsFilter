@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
   resources :sea_reports
   devise_for :users
-  resources :recipes
+
 
   root to: "home#index"
   resources :sea_details
 
   post 'create_sea_port' => 'sea_reports#create_sea_port'
   post 'create_ship_particular' => 'sea_reports#create_ship_particular'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
