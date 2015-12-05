@@ -1,8 +1,6 @@
 class SeaReportsController < ApplicationController
   before_action :set_sea_report, only: [:show, :edit, :update, :destroy]
 
-  layout 'sea_reports'
-
   def create_sea_port
     sea_port_reached = SeaPort.where(:is_reached => false).blank?
 
@@ -118,7 +116,7 @@ class SeaReportsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_sea_report
-      @sea_report = SeaReport.find(params[:id])
+      @sea_report = SeaReport.find(params["id"])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
