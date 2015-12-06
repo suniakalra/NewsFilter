@@ -6,6 +6,7 @@ class CreateSeaPorts < ActiveRecord::Migration
       t.string :reached_port_name
       t.boolean :is_reached, :default => false
       t.string  :description, :default => nil
+      t.integer :total_reports, :default => nil
       t.timestamps null: false
 
     end

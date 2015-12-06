@@ -1,34 +1,6 @@
 class SeaReportsController < ApplicationController
   before_action :set_sea_report, only: [:show, :edit, :update, :destroy]
 
-  def create_sea_port
-    sea_port_reached = SeaPort.where(:is_reached => false).blank?
-
-    # TODO
-    #redirect_to sea_reports_path unless sea_port_reached and return
-
-    session[:starting_port] = params[:starting_port]
-    session[:reached_port] = params[:reached_port]
-
-    first_port_id = Port.find_or_create_by(name: params[:starting_port]).id
-    reach_port_id = Port.find_or_create_by(name: params[:reached_port]).id
-
-    first_sea_report = FirstSeaReport.create
-    sea_report = first_sea_report.sea_reports.create(:report_count => 1)
-
-    session[:first_sea_report_id] = first_sea_report.id
-
-    @sea_port = SeaPort.new(first_sea_report_id: first_sea_report.id, starting_port_id: first_port_id,reached_port_id: reach_port_id)
-    respond_to do |format|
-      if @sea_port.save
-        format.html { redirect_to sea_report_path(sea_report.id), notice: 'New Sea report was successfully created.' }
-
-      else
-        format.html { redirect_to sea_reports_path, notice: 'Please try again' }
-      end
-    end
-  end
-
   def create_ship_particular
     current_sea_report = SeaReport.find(session[:current_sea_report_id].to_i)
     current_sea_report.create_ship_particular(:vessel_name => params[:vessel_name], :vessel_imo_no => params[:imo_no], :captain_name => params[:captain], :chief_engineer => params[:chief], :vessel_id => 1)
@@ -55,12 +27,8 @@ class SeaReportsController < ApplicationController
   end
 
   def index
-    @count = SeaReport.where(:first_sea_report_id => session[:first_sea_report_id]).count
     @sea_reports = SeaReport.all
   end
-
-
-
 
   # GET /sea_reports/new
   def new
@@ -69,6 +37,8 @@ class SeaReportsController < ApplicationController
 
   # GET /sea_reports/1/edit
   def edit
+    @sea_report = SeaReport.find(params[:id])
+    @sea_port = SeaPort.find(@sea_report.sea_port_id)
   end
 
   # POST /sea_reports

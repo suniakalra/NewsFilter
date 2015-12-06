@@ -40,6 +40,7 @@ gem 'wicked_pdf', '~> 0.11.0'
 
 gem 'mysql2'
 gem 'devise'
+gem 'rails_admin'
 
 # gem 'paperclip'
 # gem 'will_paginate'

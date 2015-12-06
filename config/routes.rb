@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
-  resources :sea_reports
-  devise_for :users
 
-
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root to: "home#index"
-  resources :sea_details
 
-  post 'create_sea_port' => 'sea_reports#create_sea_port'
+  devise_for :users
+  resources :sea_reports
+
+  post 'create_sea_port' => 'sea_ports#create_sea_port'
+  post 'update_sea_port' => 'sea_ports#update_sea_port'
+
   post 'create_ship_particular' => 'sea_reports#create_ship_particular'
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
