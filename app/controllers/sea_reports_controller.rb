@@ -1,14 +1,6 @@
 class SeaReportsController < ApplicationController
   before_action :set_sea_report, only: [:show, :edit, :update, :destroy]
 
-  def create_ship_particular
-    current_sea_report = SeaReport.find(session[:current_sea_report_id].to_i)
-    current_sea_report.create_ship_particular(:vessel_name => params[:vessel_name], :vessel_imo_no => params[:imo_no], :captain_name => params[:captain], :chief_engineer => params[:chief], :vessel_id => 1)
-
-    flash[:notice] = 'Ship particulars have been updated successfully'
-    redirect_to sea_report_path(current_sea_report.id)
-  end
-
   # GET /sea_reports/1
   # GET /sea_reports/1.json
   def show
@@ -22,8 +14,6 @@ class SeaReportsController < ApplicationController
     # Save the Port names in session
     @sea_port = SeaPort.where(:first_sea_report_id =>  session[:first_sea_report_id]).first
 
-    session[:starting_port] = Port.find(@sea_port.starting_port_id).name
-    session[:reached_port] =  Port.find(@sea_port.reached_port_id).name
   end
 
   def index
