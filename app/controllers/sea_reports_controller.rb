@@ -6,14 +6,7 @@ class SeaReportsController < ApplicationController
   def show
     session[:current_sea_report_id] = params[:id]
     @sea_report = SeaReport.find(params[:id]) 
-    @count = @sea_report.report_count
-
-    # Store the Session values
-
-
-    # Save the Port names in session
-    @sea_port = SeaPort.where(:first_sea_report_id =>  session[:first_sea_report_id]).first
-
+    @count = @sea_report.report_number
   end
 
   def index

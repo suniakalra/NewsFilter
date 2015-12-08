@@ -3,8 +3,8 @@ class SeaPortsController < ApplicationController
   # create new 'sea port' and set total_reports => 1
   # 'sea report corresponding to it' n Set report_number 1
   # Redirect to edit page of the sea report.
-  def create_sea_port
 
+  def create
     session[:starting_port] = params[:starting_port]
     session[:reached_port] = params[:reached_port]
 
@@ -23,10 +23,8 @@ class SeaPortsController < ApplicationController
     end
   end
 
-
-  # Update the sea_port details.
-  def update_sea_port
-    @sea_port = SeaPort.find(params[:sea_port][:id])
+  def update
+    @sea_port = SeaPort.find(params[:id])
     @sea_port.update(sea_port_params)
     
     respond_to do |format|
@@ -38,8 +36,8 @@ class SeaPortsController < ApplicationController
       else
         format.html { redirect_to edit_sea_report_path(session[:current_sea_report_id]), notice: 'Please try again' }
       end  
-    end 
-  end 
+    end
+  end
 
   private
 

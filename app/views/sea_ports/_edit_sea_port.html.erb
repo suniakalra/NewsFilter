@@ -1,14 +1,13 @@
 <br>
 
-<%= form_for(@sea_port, url: update_sea_port_path ,html: {method: "post"}) do |f| %>
+<%= form_for(@sea_port, url: sea_port_path(@sea_port.id) ,html: {method: "patch"}) do |f| %>
 
 	<div class="col-sm-12">
 		<div class="col-sm-12">
 			<label class="" for="input01">Starting Port Name</label>  
 		
 			<div class="s">  
-               <%= f.text_field :starting_port_name, autofocus: true, class: "form-control", placeholder: "Vessel Name", style: "margin-bottom:10px",:readonly => true %>
-                <%= f.hidden_field :id %>
+               <%= f.text_field :starting_port_name, autofocus: true, class: "form-control", placeholder: "Starting Port Name", style: "margin-bottom:10px",:readonly => true %>
 			</div> 
 		
 		</div>
@@ -17,7 +16,7 @@
 		<div class="col-sm-12">
 			<label class="" for="input01">Destination Port Name</label>  
 			<div class="s">  
-               <%= f.text_field :reached_port_name, autofocus: true, class: "form-control", placeholder: "Vessel Name", style: "margin-bottom:10px" %>
+               <%= f.text_field :reached_port_name, autofocus: true, class: "form-control", placeholder: "Destination Port Name", style: "margin-bottom:10px" %>
 			</div> 
 		</div>
 	</div>
@@ -26,7 +25,7 @@
 		<div class="col-sm-12">
 			<label class="" for="input01">Description</label>  
 			<div class="s">  
-               <%= f.text_field :description, autofocus: true, class: "form-control",  placeholder: "Vessel Name", style: "margin-bottom:10px" %>
+               <%= f.text_field :description, autofocus: true, class: "form-control",  placeholder: "Description", style: "margin-bottom:10px" %>
 			</div> 
 		</div>
 	</div>

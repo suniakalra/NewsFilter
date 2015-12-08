@@ -1,21 +1,22 @@
 <!--<form class="form-horizontal" , id = "new_issue_create_form"> -->
 <br>
-<%= form_tag create_sea_port_path, method: :post do  %>
+
+<%= form_for(SeaPort.new) do |f| %>
 	<div class="control-group">
 
 		<div class="col-sm-12">
 			<div class="col-sm-12">
 				<label class="" for="input01">Starting Port Name</label>  
-				<div class="s">  
-					<input type="text" class="" id="starting_port" name="starting_port" required style="width: 65%;"> 
-				</div> 
+			
+               <%= f.text_field :starting_port_name, autofocus: true, class: "form-control", placeholder: "Starting Port Name", style: "margin-bottom:10px"%>
+			
 			</div>
 		</div>
 		<div class="col-sm-12" style="margin-top: 10px;"> 
 			<div class="col-sm-12">
 				<label class="" for="input01">Destination Port Name</label>  
 				<div class="s">  
-					<input type="text" class="" id="destination_port" name="reached_port" required style="width: 65%;">
+	               <%= f.text_field :reached_port_name, autofocus: true, class: "form-control", placeholder: "Destination Port Name", style: "margin-bottom:10px" %>
 				</div> 
 			</div>
 		</div>
@@ -24,16 +25,55 @@
 			<div class="col-sm-12">
 				<label class="" for="input01">Description</label>  
 				<div class="s">  
-					<input type="text" class="" id="description" name="description" required style="width: 65%;">
+	               <%= f.text_field :description, autofocus: true, class: "form-control",  placeholder: "Description", style: "margin-bottom:10px" %>
 				</div> 
 			</div>
 		</div>
 
-		<div class="col-sm-12 create_cut_field">
+		<div class="col-sm-12">
 			<div class="col-sm-12">
-				<button type="submit" class="btn btn-primary" , id ="create_issue" style="margin-top: 23px;" >Create</button>
-				<!--<button class="btn create_new_issue" , style="margin-top: 23px;">Cancel</button> -->
+				<label class="" for="input01">Vessel Name</label>  
+
+				<div class="s">  
+	               <%= f.text_field :vessel_name, autofocus: true, class: "form-control", placeholder: "Vessel Name", style: "margin-bottom:10px" %>
+				</div> 
 			</div>
 		</div>
+
+		<div class="col-sm-12" style="margin-top: 10px;"> 
+			<div class="col-sm-12">
+				<label class="" for="input01">Vessel IMO Number</label>  
+				<div class="s">  
+	               <%= f.number_field :vessel_imo_no, autofocus: true, class: "form-control", placeholder: "Vessel IMO Number", style: "margin-bottom:10px" %>
+				</div> 
+			</div>
+		</div>
+
+		<div class="col-sm-12" style="margin-top: 10px;"> 
+			<div class="col-sm-6">
+				<label class="" for="input01">Captain Name</label>  
+				<div class="s">  
+
+	               <%= f.text_field :captain_name, autofocus: true, class: "form-control", placeholder: "Captain Name", style: "margin-bottom:10px" %>
+
+				</div> 
+			</div>
+
+			<div class="col-sm-6">
+				<label class="" for="input01">Chief Engineer Name</label>  
+				<div class="s">  
+	               <%= f.text_field :chief_engineer, autofocus: true, class: "form-control", placeholder: "Chief Engineer Name", style: "margin-bottom:10px" %>
+				</div> 
+			</div>
+
+		</div>
+
+
+		<div class="col-sm-12 create_cut_field">
+			<div class="col-sm-12">
+				<button type="submit" class="btn btn-primary" , id ="create_issue" style="margin-top: 23px;" > Create </button>
+			</div>
+		</div>
+
 	</div>  
 <%end%>
