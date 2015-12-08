@@ -37,6 +37,7 @@ class SeaReportsController < ApplicationController
 
   # GET /sea_reports/1/edit
   def edit
+    session[:current_sea_report_id] = params[:id]
     @sea_report = SeaReport.find(params[:id])
     @sea_port = SeaPort.find(@sea_report.sea_port_id)
   end
