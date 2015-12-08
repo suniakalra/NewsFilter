@@ -31,7 +31,7 @@ Report <%= @count %> from <%= session[:starting_port] %> to <%= session[:reached
 <br>
 
 
-<div class="nav-sea-report col-md-offset-1">
+<div class="col-md-offset-1 container">
 
     <!-- Menu bar-->
     <ul class="nav nav-tabs">
@@ -50,34 +50,38 @@ Report <%= @count %> from <%= session[:starting_port] %> to <%= session[:reached
     <div class="tab-content fieldset col-md-10 bg-change1">
 
         <!-- First Section -->
-        <div id="port_details" class="tab-pane fade in active">
-            <h3>Port Details</h3>
 
-            <div class="row">
-              <div class="col-md-4 col-md-offset-3">
+      <div id="port_details" class="tab-pane fade in active">
+        <h3>Port Details</h3>
+        <div class="row">
+          <div class="col-md-4 col-md-offset-3">
 
-                <%= render 'sea_ports/edit_sea_port' %>
-              </div>
+            <%= render 'sea_ports/edit_sea_port' %>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Second Section -->
+      <div id="ship_particulars" class="tab-pane fade">
+          <h3>Ship Particulars</h3>
+
+          <div class="row">
+            <div class="col-md-4 col-md-offset-3">
+              <%= render 'ship_particulars' %>
             </div>
-        </div>
+          </div>
+      </div>
 
-        <!-- Second Section -->
-        <div id="ship_particulars" class="tab-pane fade">
-            <h3>Ship Particulars</h3>
 
-            <div class="row">
-              <div class="col-md-4 col-md-offset-3">
-                <%= render 'ship_particulars' %>
-              </div>
-            </div>
-        </div>
+      <div id="help" class="tab-pane fade">
+        <h3>HOME</h3>
 
-        <div id="help" class="tab-pane fade">
-            <h3>Help Section</h3>
-            <p>help</p>
-        </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
 
-    </div>
 </div>
+
+
 
 </fieldset>

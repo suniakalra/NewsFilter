@@ -17,7 +17,7 @@ class SeaReportsController < ApplicationController
     @count = @sea_report.report_count
 
     # Store the Session values
-    session[:first_sea_report_id] = @sea_report.first_sea_report_id
+
 
     # Save the Port names in session
     @sea_port = SeaPort.where(:first_sea_report_id =>  session[:first_sea_report_id]).first

@@ -21,13 +21,9 @@
         </li>
 
         <li>
-          <% last_sea_report = SeaReport.last%>
+
           
-          <%if  last_sea_report.nil? || last_sea_report.is_closed %>
             <a href=<%=sea_reports_path%>>Sea Report</a>
-          <% else %>
-            <a href=<%=sea_report_path(last_sea_report.id)%>>Sea Report</a>
-          <%end %>
           
         </li>
         <li>
