@@ -5,17 +5,19 @@ class SeaPortsController < ApplicationController
   # Redirect to edit page of the sea report.
 
   def create
-    session[:starting_port] = params[:starting_port]
-    session[:reached_port] = params[:reached_port]
+    session[:starting_port] = params[:sea_port][:starting_port_name]
+    session[:reached_port] = params[:sea_port][:destination_port_name]
 
-    @sea_port = SeaPort.new(starting_port_name: params[:starting_port], reached_port_name: params[:reached_port], description: params[:description], total_reports: 1)
+    @sea_port = SeaPort.new(sea_port_params)
 
     respond_to do |format|
       if @sea_port.save
-       sea_report = @sea_port.sea_reports.create(:report_number => 1)
 
-       session[:current_sea_report_id] = sea_report.id
-       format.html { redirect_to edit_sea_report_path(sea_report.id), notice: 'New Sea report was successfully created.' }
+        @sea_port.update_attributes(:total_reports => 1)
+        sea_report = @sea_port.sea_reports.create(:report_number => 1)
+
+        session[:current_sea_report_id] = sea_report.id
+        format.html { redirect_to edit_sea_report_path(sea_report.id), notice: 'New Sea report was successfully created.' }
 
       else
         format.html { redirect_to sea_reports_path, notice: 'Please try again' }
