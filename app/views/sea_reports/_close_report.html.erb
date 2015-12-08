@@ -1,0 +1,35 @@
+<br>
+
+<%= form_for(@sea_report, url: close_report_path ,html: {method: "post"}) do |f| %>
+
+
+	<div class="col-sm-12">
+		<div class="col-sm-12">
+			<label class="" for="input01"> UTC DateTime of opening of Report</label>  
+
+			<div class="s">  
+	           <%= f.datetime_field :created_at, class: "form-control", required: true, placeholder: "DateTime", style: "margin-bottom:10px",:readonly => true %>
+			</div> 
+		</div>
+	</div>
+
+	<div class="col-sm-12">
+		<div class="col-sm-12">
+			<label class="" for="input01">Zone Time</label>  
+
+			<div class="s">  
+	           <%= f.time_zone_select :zone_time, nil, class: "form-control", required: true, placeholder: "Zonetime", style: "margin-bottom:10px" , :disabled => true%>
+			</div> 
+		</div>
+	</div>
+
+    <br>
+    <br>
+
+	<div class="col-sm-12 create_cut_field">
+		<div class="col-sm-12">
+			<button type="submit" class="btn btn-primary" , id ="create_issue" style="margin-top: 23px;" > Close the Report </button>
+		</div>
+	</div>
+
+<%end%>

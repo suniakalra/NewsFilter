@@ -14,7 +14,7 @@ class SeaPortsController < ApplicationController
       if @sea_port.save
 
         @sea_port.update_attributes(:total_reports => 1)
-        sea_report = @sea_port.sea_reports.create(:report_number => 1)
+        sea_report = @sea_port.sea_reports.create(:report_number => 1,  :zone_time => params[:sea_port][:zone_time], :is_closed => false)
 
         session[:current_sea_report_id] = sea_report.id
         format.html { redirect_to edit_sea_report_path(sea_report.id), notice: 'New Sea report was successfully created.' }
@@ -44,7 +44,7 @@ class SeaPortsController < ApplicationController
   private
 
   def sea_port_params
-    params.require(:sea_port).permit(:starting_port_name, :id, :reached_port_name, :description,  :vessel_name, :vessel_imo_no, :captain_name, :chief_engineer, :total_reports)
+    params.require(:sea_port).permit(:starting_port_name, :id, :reached_port_name, :description,  :vessel_name, :vessel_imo_no, :captain_name, :chief_engineer, :total_reports, :zone_time)
   end
 
 end

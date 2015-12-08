@@ -10,6 +10,7 @@ class SeaReportsController < ApplicationController
   end
 
   def index
+    @open_report = SeaReport.where(session[:current_sea_report_id]).first
     @sea_reports = SeaReport.all
   end
 
@@ -46,7 +47,7 @@ class SeaReportsController < ApplicationController
   def update
     respond_to do |format|
       if @sea_report.update(sea_report_params)
-        format.html { redirect_to @sea_report, notice: 'Sea report was successfully updated.' }
+        format.html { redirect_to sea_reports_path, notice: 'Sea report was successfully updated.' }
         format.json { render :show, status: :ok, location: @sea_report }
       else
         format.html { render :edit }
@@ -65,6 +66,32 @@ class SeaReportsController < ApplicationController
     end
   end
 
+  def close_report
+      @sea_report = SeaReport.find(session[:current_sea_report_id])
+
+      time_difference_in_seconds  = @sea_report.updated_at - @sea_report.created_at
+      report_interval = (time_difference_in_seconds/60/60)
+      #report_interval = helper.distance_of_time_in_words(time_difference_in_seconds)
+
+      updated = @sea_report.update_attributes(:is_closed => true, :closed_time_in_utc => DateTime.now, :report_interval => report_interval)
+
+      # Find the smt time for the zonetime
+
+      # Time.zone = @sea_report.time_zone
+      # Time.zone.now # shows current time according to @user.time_zone
+      respond_to do |format|
+        if updated
+          format.html { redirect_to sea_reports_path, notice: 'Sea report was successfully updated.' }
+          format.json { render :show, status: :ok, location: @sea_report }
+        else
+          format.html { render :edit }
+          format.json { render json: @sea_report.errors, status: :unprocessable_entity }
+        end
+      end
+
+
+  end
+
 
 
   private
@@ -75,6 +102,6 @@ class SeaReportsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sea_report_params
-      params[:sea_report]
+      params.require(:sea_report).permit(:is_closed, :closed_time_in_smt, :closed_time_in_utc, :report_number,  :zone_time, :report_interval)
     end
 end
