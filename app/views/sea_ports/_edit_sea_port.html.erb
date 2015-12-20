@@ -21,21 +21,12 @@
 		</div>
 	</div>
 
-	<div class="col-sm-12" style="margin-top: 10px;"> 
-		<div class="col-sm-12">
-			<label class="" for="input01">Description</label>  
-			<div class="s">  
-               <%= f.text_field :description, autofocus: true, class: "form-control", required: true, placeholder: "Description", style: "margin-bottom:10px" %>
-			</div> 
-		</div>
-	</div>
-
 	<div class="col-sm-12">
 		<div class="col-sm-12">
 			<label class="" for="input01">Vessel Name</label>  
 
 			<div class="s">  
-               <%= f.text_field :vessel_name, autofocus: true, required: true, class: "form-control", placeholder: "Vessel Name", style: "margin-bottom:10px" %>
+               <%= f.text_field :vessel_name, autofocus: true, required: true, class: "form-control", placeholder: "Vessel Name", style: "margin-bottom:10px", readonly: true %>
 			</div> 
 		</div>
 	</div>
@@ -44,7 +35,7 @@
 		<div class="col-sm-12">
 			<label class="" for="input01">Vessel IMO Number</label>  
 			<div class="s">  
-               <%= f.number_field :vessel_imo_no, autofocus: true, class: "form-control",required: true, placeholder: "Vessel IMO Number", style: "margin-bottom:10px" %>
+               <%= f.number_field :vessel_imo_no, autofocus: true, class: "form-control",required: true, placeholder: "Vessel IMO Number", style: "margin-bottom:10px", min: 1, readonly: true%>
 			</div> 
 		</div>
 	</div>
@@ -65,14 +56,43 @@
                <%= f.text_field :chief_engineer, autofocus: true, class: "form-control", required: true, placeholder: "Chief Engineer Name", style: "margin-bottom:10px" %>
 			</div> 
 		</div>
+	</div>
 
+
+	<div class="col-sm-12" style="margin-top: 10px;"> 
+		<div class="col-sm-12">
+			<label class="" for="input01">Any Description</label>  
+			<div class="s">  
+               <%= f.text_field :description, autofocus: true, class: "form-control", required: true, placeholder: "Description", style: "margin-bottom:10px" %>
+			</div> 
+		</div>
 	</div>
 
 	<div class="col-sm-12" style="margin-top: 10px;"> 
 		<div class="col-sm-12">
-			<label class="" for="input01">Zone Time</label>  
+			<label class="" for="input01">Total Reports</label>  
 			<div class="s">  
-	           <%= f.time_zone_select :zone_time, nil, class: "form-control", required: true, placeholder: "Zonetime", style: "margin-bottom:10px",:readonly => true %>
+	           <%= f.text_field :total_reports, class: "form-control", required: true, placeholder: "Total Reports", style: "margin-bottom:10px",:readonly => true %>
+
+			</div> 
+		</div>
+	</div>
+
+	<div class="col-sm-12" style="margin-top: 10px;"> 
+		<div class="col-sm-12">
+			<label class="" for="input01">Starting date and time in SMT</label>  
+			<div class="s">  
+	           <%= f.text_field :smt_time, class: "form-control", required: true, placeholder: "Total Reports", style: "margin-bottom:10px",:readonly => true %>
+			</div> 
+		</div>
+	</div>
+
+
+	<div class="col-sm-12" style="margin-top: 10px;"> 
+		<div class="col-sm-12">
+			<label class="" for="input01">Starting date and time in UTC</label>  
+			<div class="s">  
+	           <%= f.text_field :created_at, class: "form-control", required: true, placeholder: "Total Reports", style: "margin-bottom:10px",:readonly => true %>
 			</div> 
 		</div>
 	</div>

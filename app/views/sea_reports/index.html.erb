@@ -1,9 +1,30 @@
-<a href="#create_new_sea_report" data-toggle = "modal" >Create new Sea Report</a>
+<!-- If sea_port reached, then create new 'SeaPort'--> 
 
-</b>
+<% if @sea_port_reached || @sea_port.blank? %>
+  <a href="#create_new_sea_report" data-toggle = "modal" >
+    Start new Sailing Report (new Journey between ports)
+  </a>
+
+<% else %>
+  <% if @open_report %>
+
+    <% if @open_report.is_closed %>
+      <%= link_to "Create New Sea Report", new_sea_report_path %>
+      <% else %>
+      <%= link_to "Open the Last report", edit_sea_report_path(@open_report.id) %>
+    <% end %>
+  <%else %>
+      <a href="#create_new_sea_report" data-toggle = "modal" >Create new Sea Report</a>
+  <%end %> 
+  <div style="float: right;"> 
+    <% if @sea_port %>
+      <%= link_to "Reached the Destination Port?", close_sea_passage_path(@sea_port.id), method: :post %>
+    <% end %> 
+  </div>
+<% end %>
+
 <br>
 <br>
-
 
 <fieldset class="fieldset">
   <div class="row-fluid">
@@ -13,7 +34,8 @@
           <label class="control-label"><strong style="font-size: 16px; color:#428BCA">Report For:</strong></label>
           <%= select_tag 'project_list_report', options_for_select([ "Sea Report"]) , :style=>"margin-top: 8px; margin-right: 10px; margin-left: 10px; width: 15%;" %>
           <label style="font-size: 16px; color:#428BCA" >Start Date Identified:</label>
-          <input type="text" class="startDate" id="dateStartReport" required readonly %> <label style="font-size: 16px; color:#428BCA" >End Date Identified:</label>
+          <input type="text" class="startDate" id="dateStartReport" required readonly %>
+          <label style="font-size: 16px; color:#428BCA" >End Date Identified:</label>
           <input type="text" class="endDate" id="dateEndReport" required readonly %>
           <%=link_to "Find" , '#' , :class => "btn btn-primary find_issues",:data_pdf => false  %> 
           <%=link_to "PDF" , '#' , :class => "btn btn-primary find_issues",:data_pdf => true, :target => "_blank" %> 

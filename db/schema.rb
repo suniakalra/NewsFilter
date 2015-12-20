@@ -11,49 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151129075318) do
-
-  create_table "first_sea_reports", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "ports", force: :cascade do |t|
-    t.string   "name",        limit: 255, default: "", null: false
-    t.string   "description", limit: 255, default: "", null: false
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
-  end
-
-  create_table "recipes", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 20151128125703) do
 
   create_table "sea_ports", force: :cascade do |t|
-    t.integer  "first_sea_report_id", limit: 4
-    t.integer  "starting_port_id",    limit: 4
-    t.integer  "reached_port_id",     limit: 4
-    t.boolean  "is_reached",                    default: false
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
+    t.string   "starting_port_name", limit: 255
+    t.string   "reached_port_name",  limit: 255
+    t.boolean  "is_reached",                     default: false
+    t.string   "description",        limit: 255
+    t.string   "vessel_name",        limit: 255
+    t.integer  "vessel_imo_no",      limit: 4
+    t.integer  "vessel_id",          limit: 4
+    t.string   "captain_name",       limit: 255
+    t.string   "chief_engineer",     limit: 255
+    t.string   "zone_time",          limit: 255
+    t.string   "smt_time",           limit: 255
+    t.integer  "total_reports",      limit: 4,   default: 0
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
   end
 
   create_table "sea_reports", force: :cascade do |t|
-    t.boolean  "is_closed",                     default: false
-    t.integer  "first_sea_report_id", limit: 4
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
-    t.integer  "report_count",        limit: 4
-  end
-
-  create_table "ship_particulars", force: :cascade do |t|
-    t.string  "vessel_name",    limit: 255
-    t.integer "vessel_imo_no",  limit: 4
-    t.integer "vessel_id",      limit: 4
-    t.string  "captain_name",   limit: 255
-    t.string  "chief_engineer", limit: 255
-    t.integer "sea_report_id",  limit: 4
+    t.boolean  "is_closed",                                     default: false
+    t.string   "closed_time_in_smt", limit: 255
+    t.datetime "closed_time_in_utc"
+    t.string   "opened_time_in_smt", limit: 255
+    t.integer  "report_number",      limit: 4
+    t.integer  "integer",            limit: 4
+    t.integer  "sea_port_id",        limit: 4
+    t.string   "zone_time",          limit: 255
+    t.decimal  "report_interval",                precision: 10
+    t.datetime "created_at",                                                    null: false
+    t.datetime "updated_at",                                                    null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -73,10 +61,5 @@ ActiveRecord::Schema.define(version: 20151129075318) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-
-  create_table "vessels", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
 end

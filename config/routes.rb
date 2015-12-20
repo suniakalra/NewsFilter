@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   resources :sea_reports
   resources :sea_ports
 
-  post 'update_sea_port' => 'sea_ports#update_sea_port'
+  post 'close_report/:id' => 'sea_reports#close_report', as: :close_report
 
+  post 'close_sea_passage/:id' => 'sea_ports#close_sea_passage', as: :close_sea_passage
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

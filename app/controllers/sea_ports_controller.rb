@@ -5,20 +5,19 @@ class SeaPortsController < ApplicationController
   # Redirect to edit page of the sea report.
 
   def create
-    session[:starting_port] = params[:sea_port][:starting_port_name]
-    session[:reached_port] = params[:sea_port][:destination_port_name]
+    # Calculate smt and utc time of sea report
+    smt_time_string = "#{params[:date]} #{params[:hours]}:#{params[:minutes]}:#{params[:seconds]} #{params[:sea_port][:zone_time]}"
+    utc_time = Time.parse(smt_time_string).getutc
 
     @sea_port = SeaPort.new(sea_port_params)
 
     respond_to do |format|
       if @sea_port.save
 
-        @sea_port.update_attributes(:total_reports => 1)
-        sea_report = @sea_port.sea_reports.create(:report_number => 1,  :zone_time => params[:sea_port][:zone_time], :is_closed => false)
-
-        session[:current_sea_report_id] = sea_report.id
-        format.html { redirect_to edit_sea_report_path(sea_report.id), notice: 'New Sea report was successfully created.' }
-
+        # Update the 'smt_time' and 'created_at'.
+        @sea_port.update_attributes(:smt_time => smt_time_string, :created_at => utc_time)
+       
+        format.html { redirect_to new_sea_report_path, notice: 'Your journey between two ports has successfully started.' }
       else
         format.html { redirect_to sea_reports_path, notice: 'Please try again' }
       end
@@ -32,13 +31,27 @@ class SeaPortsController < ApplicationController
     respond_to do |format|
       if @sea_port.update(sea_port_params)  
 
-        session[:starting_port] = @sea_port.starting_port_name
-        session[:reached_port] =  @sea_port.reached_port_name
-        format.html { redirect_to edit_sea_report_path(session[:current_sea_report_id]), notice: 'Information updated successfully' }
+        format.html { redirect_to edit_sea_report_path(@sea_port.id), notice: 'Information updated successfully' }
       else
-        format.html { redirect_to edit_sea_report_path(session[:current_sea_report_id]), notice: 'Please try again' }
+        format.html { redirect_to edit_sea_report_path(@sea_port.id), notice: 'Please try again' }
       end  
     end
+  end
+
+  # Close sea_passage
+  def close_sea_passage
+    @sea_port = SeaPort.find(params[:id])
+
+    respond_to do |format|
+      if @sea_port.update_attributes(:is_reached => true)
+
+        format.html { redirect_to root_path, notice: 'Congrats For successfully completion of Journey'}
+      else
+        format.html { redirect_to sea_reports_path, notice: 'Please try again' }
+      end  
+    end
+
+
   end
 
   private

@@ -3,13 +3,15 @@ class CreateSeaReports < ActiveRecord::Migration
     create_table :sea_reports do |t|
       t.boolean :is_closed, :default => false
 
-      t.datetime :closed_time_in_smt
+      t.string :closed_time_in_smt
       t.datetime :closed_time_in_utc 
+
+      t.string :opened_time_in_smt
 
   	  t.integer :report_number, :integer
       t.integer :sea_port_id
 
-      t.string :zone_time, :limit => 255, :default => "UTC" 
+      t.string :zone_time
       t.decimal :report_interval
       t.timestamps null: false
     end

@@ -1,13 +1,13 @@
 $(document).ready(function(){
 	$('.datepicker').datepicker({
-		format : 'dd-mm-yyyy'
+		format : 'yyyy-mm-dd'
 	});
 	var startDate=null;
 	var endDate=null;
 	var nowTemp = new Date();
 	var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
 	$('.startDate').datepicker({
-		format : 'dd-mm-yyyy',
+		format : 'yyyy-mm-dd',
 		onRender: function(date) {
 			return date.valueOf() > now.valueOf() ? 'disabled' : '';
 		}
@@ -21,7 +21,7 @@ $(document).ready(function(){
 		}
 	});
 	$('.endDate').datepicker({
-		format : 'dd-mm-yyyy',
+		format : 'yyyy-mm-dd',
 		onRender: function(date) {
 			return date.valueOf() > now.valueOf() ? 'disabled' : '';
 		}

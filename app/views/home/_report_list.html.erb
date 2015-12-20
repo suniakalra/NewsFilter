@@ -12,8 +12,8 @@
 </style>
   <div class="panel panel-primary">
     <!-- Default panel contents -->
-    <div class="panel-heading">Cuts</div>
-    <table  class="table  no-margin" id="table-issues-report" cellspacing="0" width="100%" style="margin-top: 10px;">
+    <div class="panel-heading">Sea Reports</div>
+    <table  class="table  no-margin"cellspacing="0" width="100%" style="margin-top: 10px;">
       <thead>
         <tr style="background-color: #F1EEEE;">
 
@@ -21,13 +21,27 @@
           <th> Starting Port </th>
           <th> Destination Port </th>
           <th> Report Number</th>
-          <th>Starting Date</th>
-          <th>Closing Date</th>
-          <th>Status</th>
+          <th>Starting Date(SMT)</th>
+          <th>Closing Date(SMT)</th>
+          <th>Closed Status</th>
         </tr>
 
       </thead>
       <tbody>
+        <% if @sea_reports %>
+          <% @sea_reports.each do |sea_report| %>
+            <tr>
+              <% sea_port = SeaPort.find(sea_report.sea_port_id) %>
+              <td> <%= sea_port.vessel_name %></td>
+              <td> <%= sea_port.starting_port_name %></td>
+              <td> <%= sea_port.reached_port_name %></td>
+              <td> <%= sea_report.report_number %></td>
+              <td> <%= sea_report.opened_time_in_smt %></td>
+              <td> <%= sea_report.closed_time_in_smt %></td>
+              <td> <%= sea_report.is_closed %></td>
+            </tr>
+          <% end %>
+        <% end %>
       </tbody>
     </table>
-  </d
+  </div>

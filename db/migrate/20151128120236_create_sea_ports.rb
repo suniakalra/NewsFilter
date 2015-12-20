@@ -13,9 +13,10 @@ class CreateSeaPorts < ActiveRecord::Migration
       t.string :captain_name
       t.string :chief_engineer
 
-      t.string :zone_time, :limit => 255, :default => "UTC" 
+      t.string :zone_time
+      t.string :smt_time
 
-      t.integer :total_reports, :default => nil
+      t.integer :total_reports, :default => 0
       t.timestamps null: false
 
     end
