@@ -9,7 +9,7 @@ class SeaReportsController < ApplicationController
   end
 
   def index
-    # Check Sea Passage completed or not
+    # Check Sea Passage completed or not.
     @sea_port = SeaPort.last
     @sea_port_reached = @sea_port ? @sea_port.is_reached : false
 
