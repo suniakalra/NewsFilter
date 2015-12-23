@@ -14,7 +14,7 @@
       <%= link_to "Open the Last report", edit_sea_report_path(@open_report.id) %>
     <% end %>
   <%else %>
-      <a href="#create_new_sea_report" data-toggle = "modal" >Create new Sea Report</a>
+      <%= link_to "Create New Sea Report", new_sea_report_path %>
   <%end %> 
   <div style="float: right;"> 
     <% if @sea_port %>
