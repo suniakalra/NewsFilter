@@ -1,6 +1,10 @@
-development:
-  adapter: postgresql
-  encoding: unicode
-  database: demo_development
-  pool: 5
 
+development:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: category_news
+  pool: 5
+  username: root
+  password:
+  host: localhost

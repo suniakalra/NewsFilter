@@ -38,8 +38,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'wicked_pdf', '~> 0.11.0'
 #gem 'bootstrap-sass'
 
-#gem 'mysql2'
-gem 'pg', '~> 0.18.4'
+gem 'mysql2'
+#gem 'pg', '~> 0.18.4'
 
 gem 'devise'
 gem 'rails_admin'
