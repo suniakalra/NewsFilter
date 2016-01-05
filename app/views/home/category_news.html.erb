@@ -23,18 +23,26 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
+
+                <a href="#menu-toggle" class="btn btn-default" id="menu-toggle" style="float: right;">Toggle Menu</a>
                 <div class="row">
 
-                    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle" style="float: right;">Toggle Menu</a>
+
 
                     <div class="col-lg-12">
+                      <h3> News for '<%= @category.name %>'</h3>
 
+                      <% @news.each do |news| %>
                         <div class="container">
-                          <h2>Basic Panel</h2>
+
                           <div class="panel panel-default">
-                            <div class="panel-body">A Basic Panel</div>
+                            <div class="panel-body">
+                              <h5> <%= news.title %> </h5>
+                              <%= news.url %>
+                            </div>
                           </div>
                         </div>
+                      <% end %>
 
 
                     </div>

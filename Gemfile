@@ -44,6 +44,7 @@ gem 'mysql2'
 gem 'devise'
 gem 'rails_admin'
 
+gem "feedjira"
 #gem 'heroku'
 
 # gem 'paperclip'

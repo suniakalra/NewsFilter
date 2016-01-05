@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
 
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  root to: "home#index"
+  root to: "home#category_news"
 
   devise_for :users
-  resources :sea_reports
-  resources :sea_ports
 
-  post 'close_report/:id' => 'sea_reports#close_report', as: :close_report
+  resources :categories
+  get 'category/:id/news' => 'home#category_news', as: :category_news
 
-  post 'close_sea_passage/:id' => 'sea_ports#close_sea_passage', as: :close_sea_passage
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
